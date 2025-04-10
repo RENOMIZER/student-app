@@ -3,7 +3,7 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import {useEffect} from 'react';
 import { StatusBar } from "expo-status-bar";
-import { ThemeProvider, DarkTheme, DefaultTheme } from "@react-navigation/native";
+import { ThemeProvider, DefaultTheme } from "@react-navigation/native";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -26,8 +26,15 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={DefaultTheme}>
-      <Stack screenOptions={{headerShown: false}}/>
-      <StatusBar style="auto"/>
+      <StatusBar style='dark' />
+      <Stack screenOptions={{headerShown: false}}>
+        <Stack.Screen name="index" options={{ title: "Welcome" }} />
+        <Stack.Screen name="menu" options={{ title: "Main Menu" }} />
+        <Stack.Screen name="maps" options={{ title: "Maps" }} />
+        <Stack.Screen name="places" options={{ title: "Places" }} />
+        <Stack.Screen name="guide" options={{ title: "Student Guide" }} />
+        <Stack.Screen name="faq" options={{ title: "FAQ" }} />
+      </Stack>
     </ThemeProvider>
   );
 }
