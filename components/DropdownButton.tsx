@@ -1,28 +1,36 @@
-import { Image, Pressable} from "react-native";
-import { Href, Link } from 'expo-router';
+import { Text, Pressable, Image } from "react-native";
 
-type ButtonProps = {
-  text: string;
-  image: string;
-  link: Href;
-}
+type DropdownProps = {
+  children?: any;
+  title: string;
+  image?: string;
+};
 
-export default function MenuButton( props : ButtonProps ) {
+const DropdownButton = (props : DropdownProps) => {
   let icon
   switch (props.image) {
     case 'map':
-      icon = require('../assets/images/map.png')
+      icon = require('@/assets/images/map.png')
       break
     case 'must':
-      icon = require('../assets/images/must-have.png')
+      icon = require('@/assets/images/must-have.png')
       break
     case 'guide':
-      icon = require('../assets/images/guide.png')
+      icon = require('@/assets/images/guide.png')
       break
     case 'faq':
-      icon = require('../assets/images/faq.png')
+      icon = require('@/assets/images/faq.png')
       break
-  } 
+    case 'food':
+      icon = require('@/assets/images/food.jpg')
+      break
+    case 'stores':
+      icon = require('@/assets/images/stores.jpg')
+      break
+    case 'ent':
+      icon = require('@/assets/images/entertainment.png')
+      break
+  }
 
   return (
     <Pressable style={{
@@ -34,8 +42,7 @@ export default function MenuButton( props : ButtonProps ) {
       display: 'flex',
       flexDirection: 'row',
     }}>
-      <Link 
-        href={props.link}
+      <Text
         style={{ 
           fontFamily: 'Montserrat Regular',
           fontSize: 20,
@@ -45,7 +52,7 @@ export default function MenuButton( props : ButtonProps ) {
           flex: 1,
           padding: 20,
         }}
-      >{props.text}</Link>
+        >{props.title}</Text>
       <Image 
         source={icon}
         style = {{
@@ -60,3 +67,5 @@ export default function MenuButton( props : ButtonProps ) {
     </Pressable>
   )
 }
+
+export default DropdownButton
